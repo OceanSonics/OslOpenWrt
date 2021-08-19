@@ -12,3 +12,7 @@ include distroconfig.txt
 
 [all]
 # Place your custom settings here.
+
+[cm4]
+# OSL: Enable UART3 for external GPS module.
+dtoverlay=uart3,txd3_pin=4,rxd3_pin=5
