@@ -125,6 +125,16 @@ TODO: Finish writing this.
 
 Long story short is that the onboard WiFi module doesn't work without having it's own vendor firmware uploaded on power-on, that firmware needs to be included with the Linux driver handling the module. Because of various copyright laws, this isn't provided by OpenWrt, but has to be obtained from the Linux foundation directly.
 
+```text
+[ 1554.471326] brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6
+[ 1554.480632] brcmfmac mmc1:0001:1: Direct firmware load for brcm/brcmfmac43455-sdio.raspberrypi,4-compute-module.txt failed with error -2
+[ 1554.492935] brcmfmac mmc1:0001:1: Falling back to sysfs fallback for: brcm/brcmfmac43455-sdio.raspberrypi,4-compute-module.txt
+[ 1554.508277] brcmfmac mmc1:0001:1: Direct firmware load for brcm/brcmfmac43455-sdio.txt failed with error -2
+[ 1554.518041] brcmfmac mmc1:0001:1: Falling back to sysfs fallback for: brcm/brcmfmac43455-sdio.txt
+[ 1559.524253] usbcore: registered new interface driver brcmfmac
+[ 1560.536173] brcmfmac: brcmf_sdio_htclk: HT Avail timeout (1000000): clkctl 0x50
+```
+
 WiFi firmware files should live in `./files/lib/firmware/brcm/`
 
 To obtain/update the WiFi firmware files, run these commands starting from this repository:
