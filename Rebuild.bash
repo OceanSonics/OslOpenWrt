@@ -17,4 +17,4 @@ make defconfig
 
 # Make the SD card images and SDK:
 time make download
-time make -j8
+time make -j24
