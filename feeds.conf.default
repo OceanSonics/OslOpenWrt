@@ -3,4 +3,7 @@ src-git luci https://git.openwrt.org/project/luci.git;openwrt-21.02
 src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02
 src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02
 src-git OslFeeds git@github.com:OceanSonics/OpenWrtPackages.git
-#src-link custom /usr/src/openwrt/custom-feed
+
+# Uncomment and modify this to use a local version of OslFeeds
+# src-cpy OslFeeds /home/dkehsler/OpenWrtPackages
+
