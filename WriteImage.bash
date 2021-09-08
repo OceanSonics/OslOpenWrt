@@ -5,7 +5,7 @@ set -e
 set -x
 
 # Use the following command to search for image files:
-# find ./bin/targets/bcm27xx/bcm2711/ -type f -name '*-ext4-sysupgrade.img.gz'
+# find ./bin/targets/bcm27xx -type f -name '*-squashfs-factory.img.gz'
 
 # Set variables:
 DISK_PATH='/dev/sd???'
