@@ -16,3 +16,5 @@ include distroconfig.txt
 [cm4]
 # OSL: Enable UART3 for external GPS module.
 dtoverlay=uart3,txd3_pin=4,rxd3_pin=5
+# OSL: Configure GPIO25 as the WiFi reset button, generate Linux input event code BTN_5 (0x105)
+dtoverlay=gpio-key,gpio=25,keycode=261
