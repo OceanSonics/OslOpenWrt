@@ -23,7 +23,6 @@ dd if=/dev/null "of=${IMAGE_IMG_BASENAME}" bs=1 count=1 seek=1500M
 # prep the loop device for the SD card image
 LOOP_BLOCK_DEV="$(losetup -f)"
 sudo losetup --partscan --find --show "${IMAGE_IMG_BASENAME}"
-trap "sudo losetup -d ${LOOP_BLOCK_DEV}" EXIT
 
 # Get the partition table information
 PART_INFO_JSON="$(sudo sfdisk --json "${LOOP_BLOCK_DEV}")"
@@ -62,3 +61,9 @@ sudo mkdir -pv ./mnt/etc/config/
 sudo cp -v ./launchbox.config ./mnt/etc/config/launchbox
 sudo umount ./mnt
 sudo rm -r ./mnt
+
+# Finally unmount the block device:
+sudo losetup -d "${LOOP_BLOCK_DEV}"
+
+# Rename the image file into something consistent:
+mv -v "${IMAGE_IMG_BASENAME}" "LaunchBoxSdCard_$(date +'%Y%m%d_%H%M%S').img"
