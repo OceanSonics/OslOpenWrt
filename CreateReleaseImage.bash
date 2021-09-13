@@ -51,7 +51,7 @@ DATAPART_SIZESECT="$((1 * GIBIBYTE_SECT))"
 echo "${CONFIGPART_STARTSECT}, ${CONFIGPART_SIZESECT}, 83, -" | sudo sfdisk --append "${LOOP_BLOCK_DEV}"
 
 # Create the data partition at the end of the disk
-echo "${DATAPART_STARTSECT}, ${DATAPART_SIZESECT}, 83, -" | sudo sfdisk --append "${LOOP_BLOCK_DEV}"
+echo "${DATAPART_STARTSECT}, ${DATAPART_SIZESECT}, 07, -" | sudo sfdisk --append "${LOOP_BLOCK_DEV}"
 
 # Create an ext4 (Only Linux readable) partition on the persistant config (third) partition
 sudo mkfs.ext4 -L 'config' "${LOOP_BLOCK_DEV}p3"
