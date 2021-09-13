@@ -27,7 +27,7 @@ sudo losetup --partscan --find --show openwrt-21.02-snapshot-r16299-8129aa95f6b-
 # create a 1000MB partition at the end of the disk
 
 # Create an exfat partition on the persistant config (third) partition
-sudo mkfs.exfat -n 'persist-config' /dev/loop1p3
+sudo mkfs.exfat -n 'config' /dev/loop1p3
 
 # create an exfat partition in the data partition (fourth)
 sudo mkfs.exfat -n 'data' /dev/loop1p4
