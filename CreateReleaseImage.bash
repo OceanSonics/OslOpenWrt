@@ -24,7 +24,7 @@ cp -v "${IMAGE_GZ_PATH}" .
 gunzip "${IMAGE_GZ_BASENAME}"
 
 # append ~1200MB of zeros to the SD card image
-dd if=/dev/null "of=${IMAGE_IMG_BASENAME}" bs=1 count=1 seek=1500M
+dd if=/dev/null "of=${IMAGE_IMG_BASENAME}" bs=1 count=1 seek=250M
 
 # prep the loop device for the SD card image
 LOOP_BLOCK_DEV="$(losetup -f)"
@@ -34,18 +34,17 @@ sudo losetup --partscan --find --show "${IMAGE_IMG_BASENAME}"
 PART_INFO_JSON="$(sudo sfdisk --json "${LOOP_BLOCK_DEV}")"
 SECTOR_SIZE="$(echo "${PART_INFO_JSON}" | jq '.partitiontable.sectorsize')"
 MEBIBYTE_SECT="$(((1024**2)/SECTOR_SIZE))"
-GIBIBYTE_SECT="$(((1024**3)/SECTOR_SIZE))"
 JSON_LASTPART="$(echo "${PART_INFO_JSON}" | jq ".partitiontable.partitions[] | select(.node==\"${LOOP_BLOCK_DEV}p2\")")"
 LASTPART_STARTSECT="$(echo "${JSON_LASTPART}" | jq '.start')"
 LASTPART_SIZESECT="$(echo "${JSON_LASTPART}" | jq '.size')"
 
 # Plan the partition location for the config partition
 CONFIGPART_STARTSECT="$((LASTPART_STARTSECT + LASTPART_SIZESECT + (MEBIBYTE_SECT*4)))"
-CONFIGPART_SIZESECT="$((104 * MEBIBYTE_SECT))"
+CONFIGPART_SIZESECT="$((16 * MEBIBYTE_SECT))"
 
 # Plan the partition location for the data partition
 DATAPART_STARTSECT="$((CONFIGPART_STARTSECT + CONFIGPART_SIZESECT + (MEBIBYTE_SECT*4)))"
-DATAPART_SIZESECT="$((1 * GIBIBYTE_SECT))"
+DATAPART_SIZESECT="$((16 * MEBIBYTE_SECT))"
 
 # Create the config partition at the end of the disk
 echo "${CONFIGPART_STARTSECT}, ${CONFIGPART_SIZESECT}, 83, -" | sudo sfdisk --append "${LOOP_BLOCK_DEV}"
