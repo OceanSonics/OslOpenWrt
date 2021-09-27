@@ -30,8 +30,10 @@ echo "Select a valid rpi4 OpenWrt factory image from the following list:"
 select IMAGE_FILE in $(find ./bin -name '*bcm27xx-bcm2711-rpi-4-squashfs-factory.img.gz')
 do
     IMAGE_GZ_PATH="$(realpath "${IMAGE_FILE}")"
+    IMAGE_GZ_DIRNAME="$(dirname "${IMAGE_GZ_PATH}")"
     IMAGE_GZ_BASENAME="$(basename "${IMAGE_GZ_PATH}")"
     IMAGE_IMG_BASENAME="${IMAGE_GZ_BASENAME%.gz}"
+    IMAGE_SYSUPGRADE_GZ_PATH="${IMAGE_GZ_DIRNAME}/${IMAGE_IMG_BASENAME%-factory.img}-sysupgrade.img.gz"
     break
 done
 
@@ -88,4 +90,6 @@ sudo mkdir -pv "${CONFIG_MOUNTPOINT}/etc/config/"
 sudo cp -v ./launchbox.config "${CONFIG_MOUNTPOINT}/etc/config/launchbox"
 
 # Rename the image file into something consistent:
-mv -v "${IMAGE_IMG_BASENAME}" "LaunchBoxSdCard_$(date +'%Y%m%d_%H%M%S').img"
+DATE_STRING="$(date +'%Y%m%d_%H%M%S')"
+mv -v "${IMAGE_IMG_BASENAME}" "LaunchBoxSdCard_${DATE_STRING}.img"
+cp -v "${IMAGE_SYSUPGRADE_GZ_PATH}" "LaunchBoxUpgrade_${DATE_STRING}.icu"
