@@ -57,6 +57,7 @@ CONFIG_OPENSSL_WITH_SRP=y
 CONFIG_OPENSSL_WITH_TLS13=y
 CONFIG_PACKAGE_LaunchBoxRoot=y
 CONFIG_PACKAGE_arp-scan=y
+CONFIG_PACKAGE_arp-scan-database=y
 CONFIG_PACKAGE_bash=y
 # CONFIG_PACKAGE_block-mount is not set
 # CONFIG_PACKAGE_blockd is not set
