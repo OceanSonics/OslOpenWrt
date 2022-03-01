@@ -8,13 +8,13 @@ fourth release candidate, so once release happens, make sure to pull those chang
 
 ## How to synchronize this repository with upstream OpenWrt
 
-Make sure you're checked out into this (`oslwrt-rpi-cm4`) branch.
+Make sure you're checked out into this (`oslwrt-rpicm4`) branch.
 
 ```bash
 # Clone this repository and checkout this branch if you haven't already:
 git clone git@github.com:OceanSonics/OslOpenWrt.git
 cd OslOpenWrt
-git checkout oslwrt-rpi-cm4
+git checkout oslwrt-rpicm4
 
 # Add the OpenWrt repo as an upstream, and merge in their changes.
 git remote add upstream https://git.openwrt.org/openwrt/openwrt.git
