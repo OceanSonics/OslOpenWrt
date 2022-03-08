@@ -65,7 +65,7 @@ swig time xsltproc zlib1g-dev
 # Clone this repository and checkout this branch if you haven't already:
 git clone git@github.com:OceanSonics/OslOpenWrt.git
 cd OslOpenWrt
-git checkout osl-rpi-cm4
+git checkout osl-rpicm4
 
 # Update the OpenWrt feeds (https://openwrt.org/docs/guide-developer/feeds):
 ./scripts/feeds update -a
