@@ -20,7 +20,7 @@ do
 done
 
 # Inspect the disk to make sure the user picked the right one:
-lsblk --output 'PATH,FSTYPE,FSVER,MOUNTPOINT,LABEL,PTTYPE,PARTTYPE,PARTTYPENAME,PARTFLAGS,SERIAL,SIZE,STATE,TYPE,TRAN,SUBSYSTEMS,VENDOR' "${BLOCK_DEV}"
+lsblk --output 'NAME,FSTYPE,MOUNTPOINT,LABEL,PARTTYPE,PARTFLAGS,SERIAL,SIZE,STATE,TYPE,SUBSYSTEMS,VENDOR' "${BLOCK_DEV}"
 read -p "Review the above disk info to verify that the correct disk has been selected."
 read -p "Are you really sure the correct disk has been selected???"
 
