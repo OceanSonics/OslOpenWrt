@@ -55,7 +55,8 @@ sudo losetup --partscan --find --show "${IMAGE_IMG_BASENAME}"
 
 # Get the partition table information
 PART_INFO_JSON="$(sudo sfdisk --json "${LOOP_BLOCK_DEV}")"
-SECTOR_SIZE="$(echo "${PART_INFO_JSON}" | jq '.partitiontable.sectorsize')"
+# SECTOR_SIZE="$(echo "${PART_INFO_JSON}" | jq '.partitiontable.sectorsize')"
+SECTOR_SIZE="512"
 MEBIBYTE_SECT="$(((1024**2)/SECTOR_SIZE))"
 JSON_LASTPART="$(echo "${PART_INFO_JSON}" | jq ".partitiontable.partitions[] | select(.node==\"${LOOP_BLOCK_DEV}p2\")")"
 LASTPART_STARTSECT="$(echo "${JSON_LASTPART}" | jq '.start')"
