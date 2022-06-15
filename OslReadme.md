@@ -71,6 +71,11 @@ git checkout osl-rpicm4
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+# To use a GUI to select packages, add-ons, etc.:
+make menuconfig
+
+# Or
+
 # Expand the diffconfig into a buildroot config file:
 cp diffconfig .config
 make defconfig
@@ -78,6 +83,11 @@ make defconfig
 # Make the SD card images and SDK:
 make download
 make -j8
+
+# If build fails:
+# build OpenWRT with console logging,one job ata a time & can see where build failed.
+make -j1 V=s
+#
 
 # The resulting images and SDK will be located at ./bin/targets/bcm27xx/bcm2711-glibc/
 
