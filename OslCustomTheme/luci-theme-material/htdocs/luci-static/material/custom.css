@@ -1,0 +1,17 @@
+:root {
+  --main-color: #383e87;
+  --header-bg: #383e87;
+  --header-color: #fff;
+  --bar-bg: #ce7290;
+  --menu-bg-color: #fff;
+  --menu-color: #5f6368;
+  --menu-color-hover: #202124;
+  --main-menu-color: #202124;
+  --submenu-bg-hover: #f3f3f3;
+  --submenu-bg-hover-active: #ce7290;
+  --font-body: muli, sans-serif;
+}
+@font-face {
+  font-family: Muli;
+  src: url(Muli.ttf) format("ttf");
+}
